@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "F2OvcgOHbYTjOmCGxYXJLhv3bc/AsFj3xYufP8nt2BDSeR6T8Vb/8f5P0xP646KUEfR3Eg/RyAUYjsoPbWotKg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mifas\\source\\repos\\Pr\\Pr.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mifas\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.14\\microsoft.aspnetcore.jsonpatch.6.0.14.nupkg.sha512",
+    "C:\\Users\\mifas\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.14\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.14.nupkg.sha512",
+    "C:\\Users\\mifas\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\mifas\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\mifas\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
