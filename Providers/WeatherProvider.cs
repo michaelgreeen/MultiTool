@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.Extensions.Options;
-using Microsoft.Net.Http.Headers;
-using Pr.Models;
-using System.Net.Http;
+﻿using Microsoft.Extensions.Options;
+using MultiTool.Core.Config.Weather;
+using MultiTool.Models.Weather;
 using System.Text.Json;
 
-namespace Pr.Providers
+namespace MultiTool.Core.Providers
 {
     public interface IWeatherProvider
     {
-        public Task<string> GetWeatherForCity(string city);
+        public Task<List<WeatherData>> GetWeatherForCity(string city);
     }
 
     public class WeatherProvider : IWeatherProvider
@@ -22,7 +20,7 @@ namespace Pr.Providers
             _httpClientFactory = clientFactory;
         }
 
-        public async Task<string> GetWeatherForCity(string city)
+        public async Task<List<WeatherData>> GetWeatherForCity(string city)
         {
             var httpClient = _httpClientFactory.CreateClient();
             var httpRequestMessage = new HttpRequestMessage(
@@ -34,9 +32,7 @@ namespace Pr.Providers
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
-                var x =  await JsonSerializer.DeserializeAsync<object>(contentStream);
-                string s = x.ToString();
-                return s;
+                return await JsonSerializer.DeserializeAsync<List<WeatherData>>(contentStream);
             }
             return null;
         }

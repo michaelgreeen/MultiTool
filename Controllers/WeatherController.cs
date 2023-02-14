@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pr.Providers;
+using MultiTool.Core.Providers;
 
-namespace Pr.Controllers
+namespace MultiTool.Core.Controllers
 {
     [Route("[controller]/[action]")]
     public class WeatherController : Controller

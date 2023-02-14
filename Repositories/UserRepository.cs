@@ -1,4 +1,4 @@
-﻿using Pr.Models;
+﻿using MultiTool.Models.User;
 
 namespace Pr.Repositories
 {

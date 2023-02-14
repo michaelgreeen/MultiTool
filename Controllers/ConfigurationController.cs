@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Pr.Controllers
+namespace MultiTool.Core.Controllers
 {
     [Route("[controller]/[action]")]
     public class ConfigurationController : Controller

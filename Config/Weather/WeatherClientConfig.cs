@@ -1,4 +1,4 @@
-﻿namespace Pr.Models
+﻿namespace MultiTool.Models.Weather
 {
     public class WeatherClientConfig
     {
