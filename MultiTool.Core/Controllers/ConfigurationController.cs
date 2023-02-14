@@ -3,11 +3,12 @@
 namespace MultiTool.Core.Controllers
 {
     [Route("[controller]/[action]")]
-    public class ConfigurationController : Controller
+    public class ConfigController : Controller
     {
-        public IActionResult GetConfiguration()
+        [HttpGet]
+        public IActionResult Get()
         {
-            return View();
+            return Ok();
         }
     }
 }

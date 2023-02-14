@@ -1,0 +1,201 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "MultiTool API",
+    "version": "v1"
+  },
+  "paths": {
+    "/Config/Get": {
+      "get": {
+        "tags": [
+          "Config"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Login/Login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Weather/GetWeatherFrom/{city}": {
+      "get": {
+        "tags": [
+          "Weather"
+        ],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Clouds": {
+        "type": "object",
+        "properties": {
+          "all": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Coord": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "format": "double"
+          },
+          "lon": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MainData": {
+        "type": "object",
+        "properties": {
+          "temp": {
+            "type": "number",
+            "format": "double"
+          },
+          "feels_like": {
+            "type": "number",
+            "format": "double"
+          },
+          "temp_min": {
+            "type": "number",
+            "format": "double"
+          },
+          "temp_max": {
+            "type": "number",
+            "format": "double"
+          },
+          "pressure": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "humidity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Sys": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "coord": {
+            "$ref": "#/components/schemas/Coord"
+          },
+          "main": {
+            "$ref": "#/components/schemas/MainData"
+          },
+          "wind": {
+            "$ref": "#/components/schemas/Wind"
+          },
+          "sys": {
+            "$ref": "#/components/schemas/Sys"
+          },
+          "rain": {
+            "nullable": true
+          },
+          "snow": {
+            "nullable": true
+          },
+          "clouds": {
+            "$ref": "#/components/schemas/Clouds"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Wind": {
+        "type": "object",
+        "properties": {
+          "speed": {
+            "type": "number",
+            "format": "double"
+          },
+          "deg": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

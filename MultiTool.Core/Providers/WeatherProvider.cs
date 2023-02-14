@@ -2,25 +2,30 @@
 using MultiTool.Models;
 using MultiTool.Core.Config;
 using System.Text.Json;
+using AutoMapper;
+using System.Net;
 
 namespace MultiTool.Core.Providers
 {
     public interface IWeatherProvider
     {
-        public Task<WeatherInfo> GetWeatherForCity(string city);
+        public Task<WeatherData> GetWeatherForCity(string city);
     }
 
     public class WeatherProvider : IWeatherProvider
     {
         private readonly WeatherClientConfig _config;
         private readonly IHttpClientFactory _httpClientFactory;
-        public WeatherProvider(IOptions<WeatherClientConfig> config, IHttpClientFactory clientFactory)
+
+        public WeatherProvider(IOptions<WeatherClientConfig> config, 
+                               IHttpClientFactory clientFactory,
+                               IMapper mapper)
         {
             _config = config.Value;
             _httpClientFactory = clientFactory;
         }
 
-        public async Task<WeatherInfo> GetWeatherForCity(string city)
+        public async Task<WeatherData> GetWeatherForCity(string city)
         {
             var httpClient = _httpClientFactory.CreateClient();
             var httpRequestMessage = new HttpRequestMessage(
@@ -32,9 +37,19 @@ namespace MultiTool.Core.Providers
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync<WeatherInfo>(contentStream);
+                var result =  await JsonSerializer.DeserializeAsync<WeatherInfo>(contentStream);
+                return GetWeatherData(result);
             }
-            return null;
+            return new WeatherData() ;
+        }
+
+        private WeatherData GetWeatherData(WeatherInfo? weatherInfo)
+        {
+            if(!weatherInfo.List.Any())
+            {
+                return null;
+            }
+            return weatherInfo.List.FirstOrDefault();
         }
     }
 }
