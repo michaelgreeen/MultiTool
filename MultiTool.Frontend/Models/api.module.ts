@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { ConfigService } from './api/config.service';
 import { LoginService } from './api/login.service';
+import { VectorService } from './api/vector.service';
 import { WeatherService } from './api/weather.service';
 
 @NgModule({

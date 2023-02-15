@@ -1,0 +1,10 @@
+<app-menu></app-menu>
+<div class="content" role="main">
+    <div>
+        <input [(ngModel)]="city" type="text" placeholder="Enter city name">
+        <button (click)="getWeather()">Get Weather</button>
+        <div *ngIf="weatherData">
+
+        </div>
+    </div>
+</div>

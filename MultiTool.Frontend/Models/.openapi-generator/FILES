@@ -1,10 +1,10 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
 api/config.service.ts
 api/login.service.ts
+api/vector.service.ts
 api/weather.service.ts
 configuration.ts
 encoder.ts
@@ -15,6 +15,7 @@ model/coord.ts
 model/mainData.ts
 model/models.ts
 model/sys.ts
+model/vectorDto.ts
 model/weatherDto.ts
 model/wind.ts
 param.ts

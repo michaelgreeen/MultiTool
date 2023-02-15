@@ -17,7 +17,7 @@ namespace MultiTool.Core.Controllers
         }
 
         [HttpGet("{city}")]
-        public async Task<ActionResult<WeatherDto>> GetWeatherFrom(string city)
+        public async Task<ActionResult<WeatherDto>> GetWeatherFrom(string? city)
         {
             var result = await _weatherProvider.GetWeatherForCity(city);
             return Ok(_mapper.Map<WeatherDto>(result));
