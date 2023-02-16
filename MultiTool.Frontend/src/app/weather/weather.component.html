@@ -1,10 +1,17 @@
 <app-menu></app-menu>
 <div class="content" role="main">
     <div>
-        <input [(ngModel)]="city" type="text" placeholder="Enter city name">
+        <input [(ngModel)]="city" class="form" type="text" id="email" class="form__input" autocomplete="off"
+            placeholder=" ">
         <button (click)="getWeather()">Get Weather</button>
         <div *ngIf="weatherData">
-
+            <table>
+                <tr>City : {{weatherData?.name}}</tr>
+                <tr>Felt Temperature : {{weatherData?.main.feels_like-273}}</tr>
+                <tr>Real Temperature : {{weatherData?.main.temp-273}}</tr>
+                <tr>Pressure : {{weatherData?.main.pressure}}hPa</tr>
+                <tr>Humidity : {{weatherData?.main.humidity}}%</tr>
+            </table>
         </div>
     </div>
 </div>

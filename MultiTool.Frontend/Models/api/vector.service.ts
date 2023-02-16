@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 })
 export class VectorService {
 
-    protected basePath = 'http://localhost';
+    protected basePath = BASE_PATH;
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
