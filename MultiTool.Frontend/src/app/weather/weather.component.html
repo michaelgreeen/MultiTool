@@ -1,17 +1,23 @@
 <app-menu></app-menu>
 <div class="content" role="main">
     <div>
-        <input [(ngModel)]="city" class="form" type="text" id="email" class="form__input" autocomplete="off"
-            placeholder=" ">
-        <button (click)="getWeather()">Get Weather</button>
-        <div *ngIf="weatherData">
-            <table>
-                <tr>City : {{weatherData?.name}}</tr>
-                <tr>Felt Temperature : {{weatherData?.main.feels_like-273}}</tr>
-                <tr>Real Temperature : {{weatherData?.main.temp-273}}</tr>
-                <tr>Pressure : {{weatherData?.main.pressure}}hPa</tr>
-                <tr>Humidity : {{weatherData?.main.humidity}}%</tr>
-            </table>
+        <div class="container">
+            <div class="row">
+                <input [(ngModel)]="city" type="text" id="email" class="form__input card card-small col-6"
+                    autocomplete="off" placeholder=" ">
+                <button class="card card-small" (click)="getWeather()">Get Weather</button>
+                <button class="card card-small" (click)="clearWeather()">Clear</button>
+            </div>
+
+            <div *ngIf="weatherData">
+                <ul class="list-group">
+                    <li class="list-group-item active">{{weatherData?.name}} </li>
+                    <li class="list-group-item">Feel Temperature : {{weatherData?.main?.feels_like}} &#8451;</li>
+                    <li class="list-group-item">Real Temperature : {{weatherData?.main?.temp}} &#8451;</li>
+                    <li class="list-group-item">Pressure : {{weatherData?.main?.pressure}}hPa</li>
+                    <li class="list-group-item">Humidity : {{weatherData?.main?.humidity}}%</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
